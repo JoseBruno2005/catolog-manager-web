@@ -1,0 +1,73 @@
+<div>
+  <h2>Cadastrar-se</h2>
+
+  <p-toast/>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <input 
+      pInputText 
+      type="text" 
+      placeholder="Nome"
+      formControlName="name"
+    />
+    @if (name.touched) {
+      @if (name.hasError('required')) {
+        <p-message severity="error" size="small" variant="simple">O nome é obrigatório.</p-message>
+      } @else if (name.hasError('minlength')) {
+        <p-message severity="error" size="small" variant="simple">O nome deve ter pelo menos 3 caracteres.</p-message>
+      } @else if (name.hasError('maxlength')) {
+        <p-message severity="error" size="small" variant="simple">O nome deve ter no máximo 50 caracteres.</p-message>
+      }
+    }
+    
+
+    <input 
+      pInputText 
+      type="email" 
+      placeholder="Email"
+      formControlName="email"
+    />
+    @if (email.touched) {
+      @if (email.hasError('required')) {
+        <p-message severity="error" size="small" variant="simple">O email é obrigatório.</p-message>
+      } @else if (email.hasError('email')) {
+        <p-message severity="error" size="small" variant="simple">O email é inválido.</p-message>
+      }
+    }
+
+    <div formGroupName="passwordFormGroup">
+      <input 
+        pInputText 
+        type="password" 
+        placeholder="Senha"
+        formControlName="password"
+      />
+      @if (password.touched) {
+        @if(password.hasError('required')) {
+          <p-message severity="error" size="small" variant="simple">A senha é obrigatória.</p-message>
+        } @else if (password.hasError('minlength')) {
+          <p-message severity="error" size="small" variant="simple">A senha deve ter pelo menos 8 caracteres.</p-message>
+        } @else if (password.hasError('maxlength')) {
+          <p-message severity="error" size="small" variant="simple">A senha deve ter no máximo 15 caracteres.</p-message>
+        } @else if (password.hasError('pattern')) {
+          <p-message severity="error" size="small" variant="simple">A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.</p-message>
+        }
+      }
+
+      <input 
+        pInputText 
+        type="password" 
+        placeholder="Confirmar senha"
+        formControlName="confirmPassword"
+      />
+      @if (confirmPassword.touched) {
+        @if (confirmPassword.hasError('required')) {
+          <p-message severity="error" size="small" variant="simple">A confirmação de senha é obrigatória.</p-message>
+        } @else if(passwordFormGroup.hasError('mismatch')) {
+          <p-message severity="error" size="small" variant="simple">As senhas não coincidem.</p-message>
+        }
+      }
+    </div>
+    <p-button label="Cadastrar" type="submit"/>
+  </form>
+</div>
