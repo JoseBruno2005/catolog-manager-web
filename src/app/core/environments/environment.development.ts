@@ -10,5 +10,7 @@ export const environment = {
         'products:write',
     ],
     authorizeUrl: `${apiUrl}/oauth2/authorize`,
-    tokenUrl: `${apiUrl}/oauth2/token`,
+    tokenUrl: `${apiUrl}/auth/token`,
+    refreshTokenUrl: `${apiUrl}/auth/refresh`,
+    logoutUrl: `${apiUrl}/auth/logout`
 };
