@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { LoginService } from "../../auth/login.service";
+import { LoginService } from "../../auth/services/login.service";
 
 @Component({
     selector: 'app-login-callback',
