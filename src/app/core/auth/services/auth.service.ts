@@ -1,21 +1,10 @@
 import { Injectable } from "@angular/core";
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-
-    constructor() {
-        const state = this.generateRandomString();
-        const verifier = this.generateRandomBase64Url();
-        this.generateCodeChallenge(verifier).then(challenge => {
-            console.log(verifier);
-            console.log(challenge);
-            console.log(state)
-            console.log(environment.scope.toString().replace(',', ' '))
-        });
-    }
 
     private bytesToBase64Url(bytes: Uint8Array): string {
         const base64String = btoa(String.fromCharCode(...bytes));
@@ -38,9 +27,9 @@ export class AuthService {
     }
 
     public async login() {
-        const verifier = this.generateRandomString();
+        const verifier = this.generateRandomBase64Url();
         const challenge = await this.generateCodeChallenge(verifier);
-        const state = this.generateRandomBase64Url();
+        const state = this.generateRandomString();
 
         sessionStorage.setItem('code_verifier', verifier);
         sessionStorage.setItem('state', state);
@@ -49,7 +38,7 @@ export class AuthService {
             response_type: 'code',
             client_id: environment.clientId,
             redirect_uri: environment.redirectUri,
-            scope: environment.scope.toString().replace(',', ' '),
+            scope: environment.scope.join(' '),
             state: state,
             code_challenge: challenge,
             code_challenge_method: 'S256'
