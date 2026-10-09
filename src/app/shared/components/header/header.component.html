@@ -1,0 +1,32 @@
+<div class="header">
+    <div class="header-logo">
+        <i class="pi pi-shopping-cart"></i>
+        <h1>Catalog Manager</h1>
+    </div>
+    <div class="header-search">
+        <app-input type="text" placeholder="Search" icon="pi pi-search" variant="outline"/>
+    </div>
+    <div class="header-actions">
+        <div class="header-actions-desktop">
+            @if(!isAutheticated()) {
+                <p-button label="Entrar" (onClick)="login()"></p-button>
+                <p-button label="Cadastrar" (onClick)="register()" severity="secondary"></p-button>
+            }@else {
+                <p-button icon="pi pi-user"></p-button>
+                <p-button label="Sair" (onClick)="logout()"></p-button>
+            }
+        </div>
+        <div class="header-actions-mobile">
+            <p-button
+                icon="pi pi-bars"
+                ariaLabel="Abrir menu"
+                (onClick)="menu.toggle($event)"
+                severity="secondary"
+            ></p-button>
+            <p-menu #menu [model]="menuItems()" [popup]="true" appendTo="body"/>
+        </div>
+    </div>
+</div>
+<div class="header-search-mobile">
+    <app-input type="text" placeholder="Search" icon="pi pi-search" variant="filled"/>
+</div>

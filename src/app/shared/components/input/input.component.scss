@@ -1,0 +1,41 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.input {
+    display: flex;
+    width: 100%;
+
+    input {
+        width: 100%;
+    }
+}
+
+.input-variant-outline {
+    input {
+        background-color: transparent !important;
+        border: solid var(--color-gray-800) 1px;
+        color: var(--color-gray-800);
+
+        &::placeholder {
+            color: var(--color-gray-800);
+        }
+    }
+
+    .icon {
+        color: var(--color-gray-800);
+    }
+}
+
+.input-variant-filled {
+    input {
+        background-color: var(--color-gray-200);
+        border: solid var(--color-gray-500) 1px;
+        color: var(--color-gray-500);
+    }
+
+    .icon {
+        color: var(--color-gray-500);
+    }
+}

@@ -1,0 +1,8 @@
+<p-iconField 
+    class="input"
+    [class.input-variant-filled]="variant() === 'filled'"
+    [class.input-variant-outline]="variant() === 'outline'"
+>
+    <p-inputIcon [class]="icon()" class="icon"/>
+    <input [type]="type()" pInputText [placeholder]="placeholder()"/>
+</p-iconField>
