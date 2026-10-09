@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { blockRegisterGuard } from "../../../shared/guards/block-register.guard";
 
 export const publicRoutes: Routes = [
     {
@@ -8,6 +9,7 @@ export const publicRoutes: Routes = [
         )
     },{
         path: 'register',
+        canActivate: [blockRegisterGuard],
         loadComponent: () => import('../register/register.component').then(
             (m) => m.RegisterComponent
         )
