@@ -1,6 +1,5 @@
 import { ApplicationConfig, inject, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
@@ -9,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { LoginService } from './core/auth/services/login.service';
 import { catchError, firstValueFrom, of } from 'rxjs';
+import { CatalogTheme } from './core/theme/catalog-theme';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
     MessageService,
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: CatalogTheme,
       }
     })
   ]
