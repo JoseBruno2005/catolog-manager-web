@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    color: var(--color-gray-900);
+    background-color: var(--color-gray-50);
+    font-family: var(--font-family-default);
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--color-gray-50);
+}
