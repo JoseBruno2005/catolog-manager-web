@@ -1,2 +1,15 @@
-<h1>Welcome to Catalog Manager</h1>
-<p-button label="entrar" (onClick)="login()"></p-button>
+<app-header/>
+<div class="home">
+    <div class="categories">
+        @for (category of categories; track category.label) {
+            <p-chip 
+                [label]="category.label"
+                [class.chip-active]="selectedCategory() === category.label"
+                (click)="selectCategory(category.label)"
+            />
+        }
+    </div>
+    <div class="catalog">
+
+    </div>
+</div>

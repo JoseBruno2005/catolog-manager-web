@@ -1,17 +1,22 @@
-import { Component, inject } from '@angular/core';
-import { AuthService } from '../../../core/auth/services/auth.service';
-import { ButtonModule } from 'primeng/button';
+import { Component, inject, signal } from '@angular/core';
+import { headerComponent } from '../../../shared/components/header/header.component';
+import { categories } from './constants';
+import { Chip } from 'primeng/chip';
 
 @Component({
   selector: 'app-home',
-  imports: [ButtonModule],
+  imports: [
+    headerComponent,
+    Chip
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  private readonly authService = inject(AuthService);
+  readonly categories = categories;
+  readonly selectedCategory = signal('todas');
 
-  login() {
-    return this.authService.login();
+  selectCategory(label: string) {
+    this.selectedCategory.set(label);
   }
 }
