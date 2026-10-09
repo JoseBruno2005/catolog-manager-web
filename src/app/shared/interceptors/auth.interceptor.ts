@@ -34,6 +34,7 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: 
                 return throwError(() => error);
             }
 
+            console.log("Chegou no interceptor")
             return loginService.refreshToken().pipe(
                 catchError((refreshError: unknown) => {
                     tokenService.clearToken();
